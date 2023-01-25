@@ -1,0 +1,7 @@
+build
+node_modules
+.github
+.yarn
+next.config.js
+postcss.config.js
+tailwind.config.js

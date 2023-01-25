@@ -1,18 +1,24 @@
-import './globals.css'
+'use client';
+import './globals.scss';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
-    </html>
-  )
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import Navbar from './Navbar';
+import styles from './page.module.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+	const queryClient = new QueryClient();
+	return (
+		<html lang="en">
+			<head />
+			<body>
+				<QueryClientProvider client={queryClient}>
+					<header>
+						<Navbar />
+					</header>
+					<main className={styles.main}>{children}</main>
+				</QueryClientProvider>
+			</body>
+		</html>
+	);
 }
