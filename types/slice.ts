@@ -1,3 +1,5 @@
+import { Course } from '@/type';
+
 export type StateDataSlice = {
 	_hydrate?: boolean;
 	account: string;
@@ -12,6 +14,7 @@ export type StateActionSlice = {
 	setCourse: (data: StateDataSlice['course']) => void;
 	onHydrate: () => void;
 	fetchCourse: (id: string) => Promise<void>;
+	buyCourse: (data: { course: Course }) => Promise<void>;
 	isReady: () => boolean;
 };
 

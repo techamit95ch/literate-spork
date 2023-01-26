@@ -5,7 +5,12 @@ const nextConfig = {
 		appDir: true,
 	},
 	images: {
-		domains: ['mdbootstrap.com'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: '**',
+			},
+		],
 	},
 };
 

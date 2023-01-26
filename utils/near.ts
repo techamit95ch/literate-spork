@@ -30,7 +30,7 @@ export async function connectToContract() {
 			environment.contractName,
 			{
 				viewMethods: ['getCourse', 'getCourses'],
-				changeMethods: ['addCourse'],
+				changeMethods: ['addCourse', 'purchaseCourse'],
 			}
 		);
 	} catch (error) {

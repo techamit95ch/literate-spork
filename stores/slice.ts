@@ -1,7 +1,7 @@
 import { StateCreator } from 'zustand';
 
 import { StateDataSlice, StateSliceType } from '@/types';
-import { connectToContract, fetchNearCourse } from '@/utils';
+import { connectToContract, fetchNearCourse, purchaseNearCourse } from '@/utils';
 
 export const initialState: StateDataSlice = {
 	_hydrate: false,
@@ -52,6 +52,12 @@ const StateSlice: StateCreator<StateSliceType, [['zustand/immer', unknown]], [],
 		if (get().account) {
 			const name = (await fetchNearCourse(id)) ?? '';
 			get().setCourse({ name, id });
+		}
+	},
+	async buyCourse({ course }) {
+		if (get().account) {
+			const GAS = 100000000000000;
+			await purchaseNearCourse({ course, GAS, price: +course.price });
 		}
 	},
 });

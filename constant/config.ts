@@ -38,6 +38,12 @@ export const COURSES_CONTRACT_NAMES = [
 	'courses.techamit.devnet',
 ] as const;
 
+export const CUSTOMER_CONTRACT_NAMES = [
+	'customer.techamit.testnet',
+	'customer.techamit.mainnet',
+	'customer.techamit.devnet',
+] as const;
+
 export const DEV_ENVIRONMENT_CONFIG = {
 	networkId: NETWORK_ENVS[0] as NETWORK_ENV_TYPE,
 	nodeUrl: NODE_URLS[0] as NODE_URLS_TYPE,

@@ -1,4 +1,6 @@
-export const fetchNearCourses = async (): Promise<Record<string, string>[]> => {
+import { BUY, Course } from '@/type';
+
+export const fetchNearCourses = async (): Promise<Course[]> => {
 	const { getCourses } = window?.contract;
 	if (!getCourses) {
 		console.log('get courses doesnt');
@@ -17,18 +19,22 @@ export const fetchNearCourse = async (id: string): Promise<string | null> => {
 	return course;
 };
 
-export const addNearCourse = (data: { id: string; course: string; name: string }) => {
+export const addNearCourse = async (data: { course: Course }) => {
 	const { addCourse } = window?.contract;
 	if (!addCourse) {
 		console.log('add course doesnt');
 		return;
 	}
-	if (!data.course) {
-		throw new Error('Course needed');
-	}
-	if (!data.id) {
-		throw new Error('id needed');
-	}
-	console.log({ data });
+
 	return addCourse(data);
+};
+
+export const purchaseNearCourse = async (data: BUY) => {
+	const { purchaseCourse } = window?.contract;
+	if (!purchaseCourse) {
+		console.log('add course doesnt');
+		return;
+	}
+
+	return purchaseCourse(data);
 };
